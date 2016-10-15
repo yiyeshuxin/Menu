@@ -10,13 +10,13 @@
         android:layout_above="@+id/main_menu_bottom_bar"
         android:layout_margin="15dp"
         android:orientation="horizontal"
-        android:weightSum="2"
+        android:weightSum="5"
         >
         <LinearLayout
             android:id="@+id/main_menu_display_component"
             android:orientation="vertical"
             android:layout_width="0dp"
-            android:layout_weight="1"
+            android:layout_weight="3"
             android:layout_height="match_parent"
             android:layout_marginRight="15dp"
 
@@ -27,9 +27,9 @@
             android:id="@+id/main_menu_apps_and_play"
             android:orientation="vertical"
             android:layout_width="0dp"
-            android:layout_weight="1"
+            android:layout_weight="2"
             android:layout_height="match_parent"
-            android:weightSum="2"
+            android:weightSum="5"
             >
             <LinearLayout
                 android:id="@+id/main_menu_weather"
@@ -38,7 +38,7 @@
                 android:orientation="vertical"
                 android:background="@mipmap/am_bg_weather"
                 android:layout_marginBottom="15dp"
-                android:layout_weight="1">
+                android:layout_weight="2">
 
             </LinearLayout>
 
@@ -47,8 +47,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:orientation="vertical"
-                android:background="@mipmap/am_bg_apps_leshi"
-                android:layout_weight="1">
+                android:layout_weight="3">
 
             </LinearLayout>
 

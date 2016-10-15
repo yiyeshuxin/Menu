@@ -21,7 +21,7 @@ public class AMMainMenuFragment extends AMBaseFragment {
 
     //
     AMComponentDisplay componentDisplay;
-    View componentApps;
+    AMComponentApps componentApps;
 
     @Override
     public void onPause() {
@@ -45,17 +45,21 @@ public class AMMainMenuFragment extends AMBaseFragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.layout_fragment_main_menu, container, false);
 
-        componentApps = rootView.findViewById(R.id.main_menu_apps);
-        componentApps.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AMSystemManager.sharedInstance().startThirdPartyApp(getContext(), "com.letv.leauto.ecolink", "com.letv.leauto.ecolink.ui.MainActivity");
-            }
-        });
+//        componentApps = rootView.findViewById(R.id.main_menu_apps);
+//        componentApps.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                AMSystemManager.sharedInstance().startThirdPartyApp(getContext(), "com.letv.leauto.ecolink", "com.letv.leauto.ecolink.ui.MainActivity");
+//            }
+//        });
 
         componentDisplay = new AMComponentDisplay(this, this.getActivity(), (LinearLayout)rootView.findViewById(R.id.main_menu_display_component));
+        componentApps = new AMComponentApps(this, this.getActivity(), (LinearLayout)rootView.findViewById(R.id.main_menu_apps));
         return rootView;
     }
 
-
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+    }
 }

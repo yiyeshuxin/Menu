@@ -21,8 +21,9 @@ public class AMRouteInfoView extends RelativeLayout {
     private TextView segDistance;
     private TextView nextRoad;
     private TextView stopNavi;
-    private TextView totalDis;
+    private TextView remainDistance;
     private TextView remainTime;
+    private TextView arriveTime;
     private TextView currentRoad;
     private TextView turnImage;
 
@@ -66,10 +67,11 @@ public class AMRouteInfoView extends RelativeLayout {
         segDistance = (TextView) findViewById(R.id.route_info_seg_dis);
         nextRoad = (TextView) findViewById(R.id.route_info_next_road);
         stopNavi = (TextView) findViewById(R.id.route_info_shutdown);
-        totalDis = (TextView) findViewById(R.id.route_info_remain_time);
+        remainDistance = (TextView) findViewById(R.id.route_info_remain_distance);
         remainTime = (TextView) findViewById(R.id.route_info_arrive_time);
         currentRoad = (TextView) findViewById(R.id.route_info_current_road);
         turnImage = (TextView)findViewById(R.id.route_info_turn_icon);
+        arriveTime = (TextView)findViewById(R.id.route_info_arrive_time);
         stopNavi.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -87,8 +89,10 @@ public class AMRouteInfoView extends RelativeLayout {
             nextRoad.setText(guideInfo.nextRoadName);
             //
             segDistance.setText(addDistanceUnit(guideInfo.segRemainDistance));
-            totalDis.setText(addDistanceUnit(guideInfo.routeTotalDistance)+"-"+addTimeUnit(guideInfo.routeTotalTime));
-            remainTime.setText(addFeatureTime(guideInfo.routeTotalTime));
+            remainDistance.setText(addDistanceUnit(guideInfo.routeRemainDistance));
+            arriveTime.setText(addFeatureTime(guideInfo.routeRemainTime));
+            remainTime.setText(addTimeUnit(guideInfo.routeRemainTime));
+
             //
             if (guideInfo.turnId>16||guideInfo.turnId<0){
                 guideInfo.turnId = 0;

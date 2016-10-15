@@ -3,7 +3,9 @@ package module_menu.component_display;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.drawable.Drawable;
 import android.location.Location;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -52,6 +54,12 @@ public class AMComponentDisplay extends AMBaseComponent {
         routeInfoView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         container.addView(routeInfoView);
         routeInfoView.setVisibility(View.GONE);
+        routeInfoView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AMMapFunctionManager.sharedInstance().enterAutoMap(currentContext);
+            }
+        });
         //
         LayoutInflater aInflater = LayoutInflater.from(context);
         aInflater.inflate(R.layout.layout_component_main_menu_display, container);
@@ -117,6 +125,12 @@ public class AMComponentDisplay extends AMBaseComponent {
                 R.mipmap.am_bg_display_senic,
         };
 
+        private int[] icons = {
+                R.mipmap.am_ic_home,
+                R.mipmap.am_ic_gas_station,
+                R.mipmap.am_ic_senic,
+        };
+
         private String[] title = {
                 "回家",
                 "查找附近加油站",
@@ -135,7 +149,13 @@ public class AMComponentDisplay extends AMBaseComponent {
             ImageView imageView = (ImageView) viewGroup.findViewById(R.id.display_item_image);
             TextView textView = (TextView) viewGroup.findViewById(R.id.display_item_title);
             imageView.setBackgroundResource(imgs[position]);
+
             textView.setText(title[position]);
+            Drawable drawable = currentFragment.getActivity().getResources().getDrawable(icons[position]);
+            drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());//必须设置图片大小，否则不显示
+            textView.setCompoundDrawables(drawable, null, null, null);
+            textView.setCompoundDrawablePadding(30);//设置图片和text之间的间距
+
 
             viewGroup.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
             return viewGroup;

@@ -1,20 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <GridView
-        android:id="@+id/main_menu_apps_gridview"
+    <HorizontalScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:numColumns="2"
-        android:horizontalSpacing="10dp"
-        android:verticalSpacing="10dp"
-        android:columnWidth="90dp"
-        android:stretchMode="spacingWidthUniform"
-        android:gravity="center"
+        android:id="@+id/main_menu_apps_scroll_view"
+        android:scrollbars="none"
+        android:layout_gravity="center_vertical"
+        >
+
+        <LinearLayout
+            android:id="@+id/main_menu_apps_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:orientation="horizontal" >
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@mipmap/am_bg_cover"
         />
+    <!--<GridView-->
+        <!--android:id="@+id/main_menu_apps_gridview"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:numColumns="3"-->
+        <!--android:horizontalSpacing="10dp"-->
+        <!--android:verticalSpacing="10dp"-->
+        <!--android:columnWidth="90dp"-->
+        <!--android:stretchMode="spacingWidthUniform"-->
+        <!--android:gravity="center"-->
+
+        <!--/>-->
 
 
-</LinearLayout>
+</RelativeLayout>

@@ -18,12 +18,43 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@android:color/white"
+        android:layout_marginTop="10dp"
         android:text="莲前西路"
         android:textSize="20dp"
         android:layout_centerHorizontal="true"
-        android:layout_alignBottom="@id/route_info_seg_dis"
         android:id="@+id/route_info_next_road"
         />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:text="剩余时间"
+        android:textColor="@android:color/white"
+        android:id="@+id/route_info_remain_time"
+
+        android:layout_alignParentRight="true"
+        android:textSize="30dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="2dp"
+        android:text="剩余距离"
+        android:textColor="@android:color/white"
+
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_alignParentRight="true"
+        android:id="@+id/route_info_remain_distance"
+        android:layout_below="@id/route_info_remain_time"
+
+        android:textSize="20dp"
+        />
+
+
     <TextView
         android:layout_width="40dp"
         android:layout_height="40dp"
@@ -55,17 +86,7 @@
         android:layout_centerHorizontal="true"
         android:textSize="15dp"
         />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="2dp"
-        android:text="剩余时间"
-        android:textColor="@android:color/white"
-        android:id="@+id/route_info_remain_time"
-        android:layout_above="@id/route_info_arrive_time"
-        android:layout_centerHorizontal="true"
-        android:textSize="20dp"
-        />
+
     <TextView
         android:layout_width="35dp"
         android:layout_height="35dp"

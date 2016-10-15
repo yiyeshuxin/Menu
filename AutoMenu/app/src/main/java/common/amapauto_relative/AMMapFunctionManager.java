@@ -155,6 +155,16 @@ public class AMMapFunctionManager {
         context.sendBroadcast(intent);
     }
 
+    public void enterAutoMap(Context context)
+    {
+//        int keyType = 10010;
+        Intent intent = new Intent();
+        intent.setAction("AUTONAVI_STANDARD_BROADCAST_RECV");
+//        intent.putExtra("KEY_TYPE", keyType);
+        intent.setFlags(Intent.FLAG_INCLUDE_STOPPED_PACKAGES);
+        context.sendBroadcast(intent);
+    }
+
 
     /***
      *
@@ -228,6 +238,7 @@ public class AMMapFunctionManager {
     void handleAmapAutoState(Context context,Intent intent)
     {
         int state = intent.getIntExtra("EXTRA_STATE", 0);
+        Log.w("handleAmapAutoState", "="+state+"(8开始9结束)");
         if (state == 9)//结束导航
         {
             amapAutoCallback.stopGuide();
