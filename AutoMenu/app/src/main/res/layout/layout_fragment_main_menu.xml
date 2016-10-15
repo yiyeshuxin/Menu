@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/am_bg_main_menu"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/main_menu_bottom_bar"
+        android:layout_margin="15dp"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        >
+        <LinearLayout
+            android:id="@+id/main_menu_display_component"
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:layout_marginRight="15dp"
+
+            >
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/main_menu_apps_and_play"
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:weightSum="2"
+            >
+            <LinearLayout
+                android:id="@+id/main_menu_weather"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:orientation="vertical"
+                android:background="@mipmap/am_bg_weather"
+                android:layout_marginBottom="15dp"
+                android:layout_weight="1">
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/main_menu_apps"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:orientation="vertical"
+                android:background="@mipmap/am_bg_apps_leshi"
+                android:layout_weight="1">
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:id="@+id/main_menu_bottom_bar"
+        android:layout_alignParentBottom="true"
+        android:background="@mipmap/am_bg_bottom_bar"
+        />
+
+</RelativeLayout>
