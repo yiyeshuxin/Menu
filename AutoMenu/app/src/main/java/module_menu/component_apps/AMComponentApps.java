@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
@@ -36,6 +37,7 @@ public class AMComponentApps extends AMBaseComponent {
     //图片的文字标题
     private final int appItemNum = 3;
     private int appItemWidth = 100;
+    private int scrollViewWidth;
     private final int appItemspace = 5;
 
     private String[] titles = new String[]
@@ -62,29 +64,29 @@ public class AMComponentApps extends AMBaseComponent {
         currnentContainer = container;
         currentFragment = fragment;
         currentContext = context;
-        initAppsPager();
+        //增加组件绘制之前的监听
+        ViewTreeObserver vto =currnentContainer.getViewTreeObserver();
+        vto.addOnPreDrawListener(preDrawListener);
     }
+
+    private ViewTreeObserver.OnPreDrawListener preDrawListener = new ViewTreeObserver.OnPreDrawListener() {
+        @Override
+        public boolean onPreDraw() {
+            int height = currnentContainer.getMeasuredHeight();
+            int width = currnentContainer.getMeasuredWidth();
+            Log.d("", "apps:width" + width + "height" + height);
+            scrollViewWidth = width;
+            initAppsPager();
+            return false;
+        }
+    };
+
     private void initAppsPager()
     {
 
         LinearLayout appItemContainer = (LinearLayout) currnentContainer.findViewById(R.id.main_menu_apps_layout);
 
-        // 获取控件宽度
-        int width = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);
-        int height = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);
-        currnentContainer.measure(width, height);
-
-        int scrollViewWidth = currnentContainer.getMeasuredWidth();
-        int scrollViewHeight = currnentContainer.getMeasuredHeight();
-        Log.d("", "scroll"+scrollViewHeight+"scrollViewWidth"+scrollViewWidth);
-
-        DisplayMetrics dm = new DisplayMetrics();
-        currentFragment.getActivity().getWindowManager().getDefaultDisplay().getMetrics(dm);
-        float density = dm.density;
-
-        scrollViewWidth = convertPx2Dp(scrollViewWidth);
-//        appItemWidth = scrollViewWidth*3/5;
-        appItemWidth = (int)(scrollViewWidth/3*density);
+        appItemWidth = scrollViewWidth*2/5;
         for (int i = 0; i < appItemNum; i++)
         {
 
@@ -103,8 +105,58 @@ public class AMComponentApps extends AMBaseComponent {
                 }
             });
         }
-
+        ViewTreeObserver vto =currnentContainer.getViewTreeObserver();
+        vto.removeOnPreDrawListener(preDrawListener);
     }
+
+//    private void initAppsPager()
+//    {
+//
+//        LinearLayout appItemContainer = (LinearLayout) currnentContainer.findViewById(R.id.main_menu_apps_layout);
+//
+//        // 获取控件宽度
+//        int width = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);
+//        int height = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);
+//        currnentContainer.measure(width, height);
+//
+//        int scrollViewWidth = currnentContainer.getMeasuredWidth();
+//        int scrollViewHeight = currnentContainer.getMeasuredHeight();
+//        Log.d("", "width"+scrollViewWidth+"height"+scrollViewHeight);
+//
+//        DisplayMetrics dm = new DisplayMetrics();
+//        currentFragment.getActivity().getWindowManager().getDefaultDisplay().getMetrics(dm);
+//        float density = dm.density;
+//        Log.d("", "density"+dm.density+"\n"+
+//                "xdpi"+dm.xdpi+"\n"+
+//                "ydpi"+dm.ydpi+"\n"+
+//                "widthPixels"+dm.widthPixels+"\n"+
+//                "heightPixels"+dm.heightPixels+"\n");
+//
+//
+//
+//        scrollViewWidth = convertPx2Dp(scrollViewWidth);
+////        appItemWidth = scrollViewWidth*3/5;
+//        appItemWidth = (int)(scrollViewWidth/3*density);
+//        for (int i = 0; i < appItemNum; i++)
+//        {
+//
+//            LayoutInflater inflater = LayoutInflater.from(currentContext);
+//            View view = inflater.inflate(R.layout.layout_component_main_menus_apps_item, appItemContainer, false);
+//            ImageView img = (ImageView) view
+//                    .findViewById(R.id.apps_item_image);
+//            img.setImageResource(images[i]);
+//            //
+//            view.setLayoutParams(new ViewGroup.LayoutParams(appItemWidth, ViewGroup.LayoutParams.MATCH_PARENT));
+//            appItemContainer.addView(view);
+//            view.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    AMSystemManager.sharedInstance().startThirdPartyApp(currentContext, "com.letv.leauto.ecolink", "com.letv.leauto.ecolink.ui.MainActivity");
+//                }
+//            });
+//        }
+//
+//    }
 
     public int convertPx2Dp(int px) {
         float density = currentFragment.getActivity().getResources().getDisplayMetrics().density;

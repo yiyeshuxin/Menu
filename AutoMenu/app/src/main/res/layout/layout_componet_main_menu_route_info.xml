@@ -11,7 +11,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
         android:textColor="@android:color/white"
-        android:textSize="25dp"
+        android:textSize="30dp"
         android:id="@+id/route_info_seg_dis"
         />
     <TextView
@@ -20,7 +20,7 @@
         android:textColor="@android:color/white"
         android:layout_marginTop="10dp"
         android:text="莲前西路"
-        android:textSize="20dp"
+        android:textSize="22dp"
         android:layout_centerHorizontal="true"
         android:id="@+id/route_info_next_road"
         />
@@ -35,7 +35,7 @@
         android:id="@+id/route_info_remain_time"
 
         android:layout_alignParentRight="true"
-        android:textSize="25dp"
+        android:textSize="30dp"
         />
 
     <TextView
@@ -68,7 +68,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="莲前西路"
-        android:textSize="20dp"
+        android:textSize="22dp"
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="10dp"
@@ -84,7 +84,7 @@
         android:id="@+id/route_info_arrive_time"
         android:layout_above="@id/route_info_current_road"
         android:layout_centerHorizontal="true"
-        android:textSize="15dp"
+        android:textSize="18dp"
         />
 
     <TextView

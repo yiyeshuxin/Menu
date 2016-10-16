@@ -155,7 +155,7 @@ public class AMComponentDisplay extends AMBaseComponent {
             Drawable drawable = currentFragment.getActivity().getResources().getDrawable(icons[position]);
             drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());//必须设置图片大小，否则不显示
             textView.setCompoundDrawables(drawable, null, null, null);
-            textView.setCompoundDrawablePadding(30);//设置图片和text之间的间距
+            textView.setCompoundDrawablePadding(100);//设置图片和text之间的间距
 
 
             viewGroup.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
@@ -168,6 +168,11 @@ public class AMComponentDisplay extends AMBaseComponent {
         }
     }
 
+    public int convertPx2Dp(int px) {
+        float density = currentFragment.getActivity().getResources().getDisplayMetrics().density;
+        Log.d("", "density"+density);
+        return (int) (px /density +0.5f);
+    }
 
     @Override
     public void onFragmentPause()
