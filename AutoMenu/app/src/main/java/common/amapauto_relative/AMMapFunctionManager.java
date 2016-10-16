@@ -157,12 +157,14 @@ public class AMMapFunctionManager {
 
     public void enterAutoMap(Context context)
     {
-//        int keyType = 10010;
-        Intent intent = new Intent();
-        intent.setAction("AUTONAVI_STANDARD_BROADCAST_RECV");
+//        int keyType = 10034;
+//        Intent intent = new Intent();
+//        intent.setAction("AUTONAVI_STANDARD_BROADCAST_RECV");
 //        intent.putExtra("KEY_TYPE", keyType);
-        intent.setFlags(Intent.FLAG_INCLUDE_STOPPED_PACKAGES);
-        context.sendBroadcast(intent);
+//        intent.putExtra("SOURCE_APP", "AutoMenu");
+//        intent.setFlags(Intent.FLAG_INCLUDE_STOPPED_PACKAGES);
+//        context.sendBroadcast(intent);
+        AMSystemManager.sharedInstance().startThirdPartyApp(context, "com.autonavi.amapauto", "com.autonavi.auto.remote.fill.UsbFillActivity");
     }
 
 

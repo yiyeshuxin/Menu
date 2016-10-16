@@ -86,6 +86,7 @@ public class AMComponentDisplay extends AMBaseComponent {
                 }
             }
         });
+
     }
 
     void actionToPetrolStation()

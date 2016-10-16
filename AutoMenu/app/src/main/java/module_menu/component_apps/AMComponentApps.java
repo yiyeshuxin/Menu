@@ -78,8 +78,13 @@ public class AMComponentApps extends AMBaseComponent {
         int scrollViewHeight = currnentContainer.getMeasuredHeight();
         Log.d("", "scroll"+scrollViewHeight+"scrollViewWidth"+scrollViewWidth);
 
+        DisplayMetrics dm = new DisplayMetrics();
+        currentFragment.getActivity().getWindowManager().getDefaultDisplay().getMetrics(dm);
+        float density = dm.density;
+
         scrollViewWidth = convertPx2Dp(scrollViewWidth);
-        appItemWidth = scrollViewWidth*3/5;
+//        appItemWidth = scrollViewWidth*3/5;
+        appItemWidth = (int)(scrollViewWidth/3*density);
         for (int i = 0; i < appItemNum; i++)
         {
 
