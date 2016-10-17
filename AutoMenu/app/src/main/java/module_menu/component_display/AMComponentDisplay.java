@@ -134,8 +134,8 @@ public class AMComponentDisplay extends AMBaseComponent {
 
         private String[] title = {
                 "回家",
-                "查找附近加油站",
-                "查找附近景点",
+                "附近加油站",
+                "附近景点",
         };
 
         public TestLoopAdapter(RollPagerView viewPager) {
@@ -148,15 +148,11 @@ public class AMComponentDisplay extends AMBaseComponent {
 
             ViewGroup viewGroup = (ViewGroup) aInflater.inflate(R.layout.layout_component_main_menu_display_item, null);
             ImageView imageView = (ImageView) viewGroup.findViewById(R.id.display_item_image);
-            TextView textView = (TextView) viewGroup.findViewById(R.id.display_item_title);
+            ImageView iconView = (ImageView) viewGroup.findViewById(R.id.display_item_icon);
+            TextView textView = (TextView) viewGroup.findViewById(R.id.display_item_name);
             imageView.setBackgroundResource(imgs[position]);
-
+            iconView.setBackgroundResource(icons[position]);
             textView.setText(title[position]);
-            Drawable drawable = currentFragment.getActivity().getResources().getDrawable(icons[position]);
-            drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());//必须设置图片大小，否则不显示
-            textView.setCompoundDrawables(drawable, null, null, null);
-            textView.setCompoundDrawablePadding(100);//设置图片和text之间的间距
-
 
             viewGroup.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
             return viewGroup;
@@ -204,7 +200,8 @@ public class AMComponentDisplay extends AMBaseComponent {
                     builder.setPositiveButton("确认", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            AMMapFunctionManager.sharedInstance().enterSavedFragment(currentContext);
+//                            AMMapFunctionManager.sharedInstance().enterSavedFragment(currentContext);
+                            AMMapFunctionManager.sharedInstance().enterAutoMap(currentContext);
                         }
                     });
                     builder.setNegativeButton("取消", null);

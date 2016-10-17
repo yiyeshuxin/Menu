@@ -9,6 +9,7 @@ import android.widget.LinearLayout;
 
 import com.autonavi.automenu.R;
 
+import common.amapauto_relative.AMMapFunctionManager;
 import common.baseClass.AMBaseFragment;
 import common.system_tools.AMSystemManager;
 import module_menu.component_apps.AMComponentApps;
@@ -55,6 +56,7 @@ public class AMMainMenuFragment extends AMBaseFragment {
 
         componentDisplay = new AMComponentDisplay(this, this.getActivity(), (LinearLayout)rootView.findViewById(R.id.main_menu_display_component));
         componentApps = new AMComponentApps(this, this.getActivity(), (LinearLayout)rootView.findViewById(R.id.main_menu_apps));
+
         return rootView;
     }
 
